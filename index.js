@@ -1,5 +1,5 @@
 
-  module.export =  async function getS3files(options) {
+  module.exports =  async function getS3files(options) {
   return new Promise((resolve, reject) => {
     if (!options.hasOwnProperty('s3') || options.s3 === null) { return reject('Missing required parameter s3') }
     if (!options.hasOwnProperty('bucket') || options.bucket === null) { return reject('Missing required parameter bucket') }
