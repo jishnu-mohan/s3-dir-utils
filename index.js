@@ -1,5 +1,5 @@
 
-  module.exports =  async function getS3files(options) {
+  module.exports =  async function getS3BucketStructure(options) {
   return new Promise((resolve, reject) => {
     if (!options.hasOwnProperty('s3') || options.s3 === null) { return reject('Missing required parameter s3') }
     if (!options.hasOwnProperty('bucket') || options.bucket === null) { return reject('Missing required parameter bucket') }
@@ -14,7 +14,7 @@
     
     s3.listObjects(params, async function (err, data) {
       if(err) return reject(err)
-      if(data.hasOwnProperty('Contents') && data.Contents.length === 0){
+      if(data.hasOwnProperty('Contents') && data.Contents.length === 0) {
         return reject(`bucket "${bucket}" is empty`)
       }
       else {
@@ -27,19 +27,18 @@
 
 var fileStructure = {}
 
-async function getBucketContents(contents) { 
-  let folder
-contents.forEach(async (object) => {
+async function getBucketContents(contents) {
+  contents.forEach(async (object) => {
     let key = object.Key
-  await getFolders(key, fileStructure)
-  .then((result) => {
-    fileStructure = {...fileStructure, ...result}
+    await getFolders(key, fileStructure)
+    .then((result) => {
+      fileStructure = {...fileStructure, ...result}
+    })
+    .catch((e) => {
+      throw new Error(e)
+    })
   })
-  .catch((e) => {
-    throw new Error(e)
-  })
-  })
-   return fileStructure
+    return fileStructure
 }
 
 async function getFolders(key, parentObject) {
@@ -63,4 +62,3 @@ async function getFolders(key, parentObject) {
     return parentObject
   }
 }
-
