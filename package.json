@@ -1,0 +1,14 @@
+{
+  "name": "@jishnu_mpr/get-s3-folders",
+  "version": "1.0.0",
+  "description": "get folders from s3 bucket",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jishnu mohan",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.522.0"
+  }
+}
