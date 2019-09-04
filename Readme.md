@@ -14,6 +14,7 @@ The module requires an option object
 ```
 where:
 `s3`	AWS s3 instance
+
 `bucket`	name of bucket inside s3
 
 ## usage
