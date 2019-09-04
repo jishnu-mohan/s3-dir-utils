@@ -8,8 +8,8 @@ npm module to get folder structure from AWS S3 bucket - returns the bucket conte
 The module requires an option object 
 ``` javascript
 {
-	s3
-	bucket
+  s3
+  bucket
 }
 ```
 where:
@@ -25,7 +25,7 @@ accessKeyId:  "<Access Key Here>",
 secretAccessKey:  "<Secret Access Key Here>"
 })
 
-const  options  = {'s3':  s3, 'bucket':  'test-bucket'}
+const  options  = {'s3':  s3, 'bucket':  '<Bucket Name Here>'}
 
 const  fileStructure  =  await  getBucketStructure(options)
 
