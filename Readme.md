@@ -3,22 +3,24 @@ npm module to get folder structure from AWS S3 bucket - returns the bucket conte
 
 ## Installation
 
+## Features
 
-## options
+- returns the bucket structure as JSON object
+## Options
 The module requires an option object 
 ``` javascript
 {
-  s3
-  bucket
+ s3
+ bucket
 }
 ```
 where:
 
 `s3`	AWS s3 instance
 
-`bucket`	name of bucket inside s3
+`bucket`	name of the bucket inside s3
 
-## usage
+## Usage
 ``` javascript
 const getBucketStructure = require('get-s3-bucket-structure')
 
@@ -27,9 +29,19 @@ accessKeyId:  "<Access Key Here>",
 secretAccessKey:  "<Secret Access Key Here>"
 })
 
-const  options  = {'s3':  s3, 'bucket':  '<Bucket Name Here>'}
+const  options  = {'s3':  s3, 'bucket':  'test-bucket'}
 
-const  fileStructure  =  await  getBucketStructure(options)
+const  bucketStructure  =  await  getBucketStructure(options)
+console.log('bucketStructure -->>', bucketStructure)
 
-console.log('fileStructure -->>', fileStructure)
+/* As a promise */
+getBucketStructure(options)
+.then((bucketStructure) => {
+console.log('bucketStructure -->>', bucketStructure)
+})
+.catch((err) => {
+console.log('error', err)
+})
 ```
+
+## Result
