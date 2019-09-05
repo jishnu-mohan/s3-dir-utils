@@ -12,7 +12,7 @@ async function getStructure(options) {
       Prefix: prefix
     }
     
-    s3.listObjects(params, async function (err, data) {
+    s3.listObjectsV2(params, async function (err, data) {
       if(err) return reject(err)
       if(data.hasOwnProperty('Contents') && data.Contents.length === 0) {
         return reject(`bucket "${bucket}" is empty`)
