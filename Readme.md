@@ -12,17 +12,22 @@ The module requires an option object
 {
  s3
  bucket
+ folder
 }
 ```
 where:
 
 `s3`	AWS s3 instance
 
-`bucket`	name of the bucket inside s3
+`bucket`	name of bucket inside s3
+
+`folder` (optional) returns the file structure of a folder inside the bucket
 
 ## Usage
+
+### To get the file structure of a bucket
 ``` javascript
-const getBucketStructure = require('get-s3-bucket-structure')
+const s3B = require('get-s3-bucket-structure')
 
 const  s3  =  new  AWS.S3({
 accessKeyId:  "<Access Key Here>",
@@ -31,11 +36,11 @@ secretAccessKey:  "<Secret Access Key Here>"
 
 const  options  = {'s3':  s3, 'bucket':  'test-bucket'}
 
-const  bucketStructure  =  await  getBucketStructure(options)
+const  bucketStructure  =  await  s3B.getStructure(options)
 console.log('bucketStructure -->>', bucketStructure)
 
 /* As a promise */
-getBucketStructure(options)
+s3B.getStructure(options)
 .then((bucketStructure) => {
 console.log('bucketStructure -->>', bucketStructure)
 })
@@ -43,5 +48,20 @@ console.log('bucketStructure -->>', bucketStructure)
 console.log('error', err)
 })
 ```
+### To get file structure of a folder inside bucket
+```javascript
+const  options  = {'s3':  s3, 'bucket':  'test-bucket', 'folder': '<Folder Name>'}
 
+const  folderStructure  =  await  s3B.getStructure(options)
+console.log('folderStructure -->>', folderStructure)
+
+/* As a promise */
+s3B.getStructure(options)
+.then((folderStructure) => {
+console.log('folderStructure -->>', folderStructure)
+})
+.catch((err) => {
+console.log('error', err)
+})
+```
 ## Result
