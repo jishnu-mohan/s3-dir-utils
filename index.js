@@ -1,15 +1,15 @@
 
-  module.exports =  async function getS3BucketStructure(options) {
+async function getStructure(options) {
   return new Promise((resolve, reject) => {
     if (!options.hasOwnProperty('s3') || options.s3 === null) { return reject('Missing required parameter s3') }
     if (!options.hasOwnProperty('bucket') || options.bucket === null) { return reject('Missing required parameter bucket') }
-
+    let prefix = (!options.hasOwnProperty('folder') || options.folder === null)? '' : String(options.folder)
     let s3 =  options.s3
     let bucket = options.bucket
 
     let params = { 
       Bucket: bucket,
-      Prefix:''
+      Prefix: prefix
     }
     
     s3.listObjects(params, async function (err, data) {
@@ -18,7 +18,7 @@
         return reject(`bucket "${bucket}" is empty`)
       }
       else {
-        let bucketContents = await getBucketContents(data.Contents)
+       let bucketContents = await getBucketContents(data.Contents)
         return resolve(bucketContents)
       }
     })
@@ -62,3 +62,5 @@ async function getFolders(key, parentObject) {
     return parentObject
   }
 }
+
+exports.getStructure = getStructure
