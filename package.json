@@ -1,5 +1,5 @@
 {
-  "name": "@jishnu_mpr/get-s3-folders",
+  "name": "@jishnu-mohan/get-s3-bucket-structure",
   "version": "1.0.0",
   "description": "get folders from s3 bucket",
   "main": "index.js",
