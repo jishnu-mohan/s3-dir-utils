@@ -67,7 +67,10 @@ console.log('error', err)
 })
 ```
 
-### To check whether a file exists inside the bucket
+### To check whether a file is present inside the bucket
+Returns a boolean -
+`true` if the file is present inside the bucket & 
+`false` if the file is not present inside the bucket
 ``` javascript
 const  options  = {'s3':  s3, 'bucket':  '<Bucket Name>'}
 const file = '<File Name>'
@@ -92,6 +95,9 @@ console.log('error', err)
 })
 ```
 ### To check whether a file exists inside a folder in the bucket
+Returns a boolean -
+`true` if the file is present inside the folder & 
+`false` if the file is not present inside the folder
 ``` javascript
 const  options  = {'s3':  s3, 'bucket':  '<Bucket Name>', 'folder': '<Folder Name>'}
 const file = '<File Name>'
@@ -110,6 +116,44 @@ if(isFileExists) {
 else {
   // do something when the file does not exist inside the folder
 }
+})
+.catch((err) => {
+console.log('error', err)
+})
+```
+
+### To get a list of all files inside the bucket
+Returns an array of file names inside the bucket
+``` javascript
+const  options  = {'s3':  s3, 'bucket':  '<Bucket Name>'}
+
+const  files  =  await  s3B.getAllFiles(options)
+console.log('files inside bucket -->>', files)
+
+/* As a promise */
+
+s3B.getAllFiles(options)
+.then((files) => {
+console.log('files inside bucket -->>', files)
+})
+.catch((err) => {
+console.log('error', err)
+})
+```
+
+### To get a list of all files inside a folder in the bucket
+Returns an array of all file names present inside the folder
+``` javascript
+const  options  = {'s3':  s3, 'bucket':  '<Bucket Name>', 'folder': '<Folder Name>'}
+
+const  files  =  await  s3B.getAllFiles(options)
+console.log('files inside folder -->>', files)
+
+/* As a promise */
+
+s3B.getAllFiles(options)
+.then((files) => {
+console.log('files inside folder -->>', files)
 })
 .catch((err) => {
 console.log('error', err)
