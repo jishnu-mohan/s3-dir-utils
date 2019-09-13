@@ -6,6 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "s3",
+    "structure",
+    "directory",
+    "aws"
+  ],
   "author": "jishnu mohan",
   "license": "MIT"
 }
