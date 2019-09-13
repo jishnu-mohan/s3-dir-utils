@@ -1,8 +1,16 @@
+/**
+ * Function to get the structure of AWS s3 bucket
+ * @param {Object} options 
+ * @param {AWS s3 instance} options.s3 - AWS s3 instance
+ * @param {string} options.bucket - name of the bucket
+ * @param {string} options.folder - name of the folder
+ * @return {Promise<Object>} - promise to the bucket structure as JSON object
+ */
 
 async function getStructure(options) {
   return new Promise((resolve, reject) => {
-    if (!options.hasOwnProperty('s3') || options.s3 === null) { return reject('Missing required parameter s3') }
-    if (!options.hasOwnProperty('bucket') || options.bucket === null) { return reject('Missing required parameter bucket') }
+    if (!options.hasOwnProperty('s3') || options.s3 === null) { throw new Error('Missing required parameter s3') }
+    if (!options.hasOwnProperty('bucket') || options.bucket === null) { throw new Error('Missing required parameter bucket') }
     let prefix = (!options.hasOwnProperty('folder') || options.folder === null)? '' : String(options.folder)
     let s3 =  options.s3
     let bucket = options.bucket
@@ -66,11 +74,21 @@ async function getFolders(key, parentObject) {
   }
 }
 
+/**
+ * Function to check whether a file is present inside the bucket
+ * @param {Object} options 
+ * @param {AWS s3 instance} options.s3 - AWS s3 instance
+ * @param {string} options.bucket - name of the bucket
+ * @param {string} options.folder - name of the folder
+ * @param {string} file - name of file
+ * @returns {Promise<boolean>} - promise - true if file is present or false if file is not present
+ */
+
 async function fileExists(options, file) {
   return new Promise((resolve, reject) => {
-    if (!options.hasOwnProperty('s3') || options.s3 === null) { return reject('Missing required parameter s3') }
-    if (!options.hasOwnProperty('bucket') || options.bucket === null) { return reject('Missing required parameter bucket') }
-    if (!file || file === null) { return reject('Missing required parameter file name') }
+    if (!options.hasOwnProperty('s3') || options.s3 === null) { throw new Error('Missing required parameter s3') }
+    if (!options.hasOwnProperty('bucket') || options.bucket === null) { throw new Error('Missing required parameter bucket') }
+    if (!file || file === null) { throw new Error('Missing required parameter file name') }
     let prefix = (!options.hasOwnProperty('folder') || options.folder === null)? '' : String(options.folder)
     let s3 =  options.s3
     let bucket = options.bucket
@@ -96,11 +114,21 @@ async function fileExists(options, file) {
   })
 }
 
+/**
+ * Function to get a list of all files present inside the bucket
+ * @param {Object} options 
+ * @param {AWS s3 instance} options.s3 - AWS s3 instance
+ * @param {string} options.bucket - name of the bucket
+ * @param {string} options.folder - name of folder
+ * @param {string} file - name of the file
+ * @returns {Promise<Array<string>>} - names of files present inside the bucket
+ */
+
 async function getAllFiles(options, file) {
   return new Promise((resolve, reject) => {
-    if (!options.hasOwnProperty('s3') || options.s3 === null) { return reject('Missing required parameter s3') }
-    if (!options.hasOwnProperty('bucket') || options.bucket === null) { return reject('Missing required parameter bucket') }
-    if (!file || file === null) { return reject('Missing required parameter file name') }
+    if (!options.hasOwnProperty('s3') || options.s3 === null) { throw new Error('Missing required parameter s3') }
+    if (!options.hasOwnProperty('bucket') || options.bucket === null) { throw new Error('Missing required parameter bucket') }
+    if (!file || file === null) { throw new Error('Missing required parameter file name') }
     let prefix = (!options.hasOwnProperty('folder') || options.folder === null)? '' : String(options.folder)
     let s3 =  options.s3
     let bucket = options.bucket
