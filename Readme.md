@@ -1,5 +1,5 @@
-﻿# get s3 bucket data
-npm module to get folder structure from AWS S3 bucket - returns the bucket contents as a JSON object.
+﻿# s3 dir utils
+npm module to get AWS s3 bucket details
 
 ## Installation
 `npm i s3-dir-utils`
@@ -32,7 +32,7 @@ where:
 ### To get the file structure of the bucket
 Returns the file structure of the bucket as a JSON object
 ``` javascript
-const s3B = require('get-s3-bucket-structure')
+const s3B = require('s3-dir-utils')
 
 const  s3  =  new  AWS.S3({
 accessKeyId:  "<Access Key Here>",
