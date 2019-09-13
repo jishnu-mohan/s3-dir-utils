@@ -1,16 +1,18 @@
 {
   "name": "s3-dir-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "get data from s3 bucket",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
+    "s3-dir-utils",
     "s3",
     "structure",
     "directory",
-    "aws"
+    "aws",
+    "jishnu-mpr"
   ],
   "author": "jishnu mohan",
   "license": "MIT"
