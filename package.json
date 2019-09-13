@@ -1,14 +1,11 @@
 {
-  "name": "@jishnu-mohan/get-s3-bucket-structure",
+  "name": "s3-dir-utils",
   "version": "1.0.0",
-  "description": "get folders from s3 bucket",
+  "description": "get data from s3 bucket",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "jishnu mohan",
-  "license": "ISC",
-  "dependencies": {
-    "aws-sdk": "^2.522.0"
-  }
+  "license": "MIT"
 }
