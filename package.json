@@ -1,6 +1,6 @@
 {
   "name": "s3-dir-utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "get data from s3 bucket",
   "main": "index.js",
   "scripts": {
@@ -19,5 +19,9 @@
     "jishnu-mpr"
   ],
   "author": "jishnu mohan",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jishnu-mohan/s3-dir-utils/issues"
+  },
+  "homepage": "https://github.com/jishnu-mohan/s3-dir-utils"
 }
