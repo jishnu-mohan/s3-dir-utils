@@ -5,7 +5,11 @@ npm module to get folder structure from AWS S3 bucket - returns the bucket conte
 
 ## Features
 
-- returns the bucket structure as JSON object
+This module features 3 APIs
+1. `getStructure` - returns the file structure of the bucket as a JSON object.
+2. `fileExists` - to check whether a file is present inside the bucket.
+3. `getAllFiles` - returns an array of all files inside the bucket.
+
 ## Options
 The module requires an option object 
 ``` javascript
@@ -159,5 +163,5 @@ console.log('files inside folder -->>', files)
 console.log('error', err)
 })
 ```
-## Result
+
 
