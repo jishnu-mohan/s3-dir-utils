@@ -1,8 +1,8 @@
-﻿# get s3 folder structure
+﻿# get s3 bucket data
 npm module to get folder structure from AWS S3 bucket - returns the bucket contents as a JSON object.
 
 ## Installation
-
+`npm i s3-dir-utils`
 ## Features
 
 This module features 3 APIs
@@ -29,7 +29,8 @@ where:
 
 ## Usage
 
-### To get the file structure of a bucket
+### To get the file structure of the bucket
+Returns the file structure of the bucket as a JSON object
 ``` javascript
 const s3B = require('get-s3-bucket-structure')
 
@@ -40,8 +41,13 @@ secretAccessKey:  "<Secret Access Key Here>"
 
 const  options  = {'s3':  s3, 'bucket':  '<Bucket Name>'}
 
-const  bucketStructure  =  await  s3B.getStructure(options)
-console.log('bucketStructure -->>', bucketStructure)
+try {
+  const  bucketStructure  =  await  s3B.getStructure(options)
+  console.log('bucketStructure -->>', bucketStructure)
+}
+catch (e) {
+  console.log('ERROR', e)
+}
 
 /* As a promise */
 
@@ -53,12 +59,18 @@ console.log('bucketStructure -->>', bucketStructure)
 console.log('error', err)
 })
 ```
-### To get file structure of a folder inside bucket
+### To get file structure of a folder inside the bucket
+Returns the file structure of a folder inside the bucket as JSON object
 ```javascript
 const  options  = {'s3':  s3, 'bucket':  '<Bucket Name>', 'folder': '<Folder Name>'}
 
-const  folderStructure  =  await  s3B.getStructure(options)
-console.log('folderStructure -->>', folderStructure)
+try {
+  const  folderStructure  =  await  s3B.getStructure(options)
+  console.log('folderStructure -->>', folderStructure)
+}
+catch (e) {
+  console.log('ERROR', e)
+}
 
 /* As a promise */
 
@@ -67,20 +79,25 @@ s3B.getStructure(options)
 console.log('folderStructure -->>', folderStructure)
 })
 .catch((err) => {
-console.log('error', err)
+console.log('ERROR', err)
 })
 ```
 
 ### To check whether a file is present inside the bucket
 Returns a boolean -
-`true` if the file is present inside the bucket & 
+`true` if the file is present inside the bucket or
 `false` if the file is not present inside the bucket
 ``` javascript
 const  options  = {'s3':  s3, 'bucket':  '<Bucket Name>'}
 const file = '<File Name>'
 
-const isFileExists  =  await  s3B.fileExists(options, file)
-console.log('File Exists -->>', isFileExists)
+try {
+  const isFileExists  =  await  s3B.fileExists(options, file)
+  console.log('File Exists -->>', isFileExists)
+}
+catch (e) {
+  console.log('ERROR', e)
+}
 
 /* As a promise */
 
@@ -100,14 +117,20 @@ console.log('error', err)
 ```
 ### To check whether a file exists inside a folder in the bucket
 Returns a boolean -
-`true` if the file is present inside the folder & 
+`true` if the file is present inside the folder or
 `false` if the file is not present inside the folder
 ``` javascript
 const  options  = {'s3':  s3, 'bucket':  '<Bucket Name>', 'folder': '<Folder Name>'}
 const file = '<File Name>'
 
-const isFileExists  =  await  s3B.fileExists(options, file)
-console.log('File Exists -->>', isFileExists)
+try {
+  const isFileExists  =  await  s3B.fileExists(options, file)
+  console.log('File Exists -->>', isFileExists)
+}
+catch (e) {
+  console.log('ERROR', e)
+}
+
 
 /* As a promise */
 
@@ -122,7 +145,7 @@ else {
 }
 })
 .catch((err) => {
-console.log('error', err)
+console.log('ERROR', err)
 })
 ```
 
@@ -131,8 +154,13 @@ Returns an array of file names inside the bucket
 ``` javascript
 const  options  = {'s3':  s3, 'bucket':  '<Bucket Name>'}
 
-const  files  =  await  s3B.getAllFiles(options)
-console.log('files inside bucket -->>', files)
+try {
+  const  files  =  await  s3B.getAllFiles(options)
+  console.log('files inside bucket -->>', files)
+}
+catch (e) {
+  console.log('ERROR', e)
+}
 
 /* As a promise */
 
@@ -141,7 +169,7 @@ s3B.getAllFiles(options)
 console.log('files inside bucket -->>', files)
 })
 .catch((err) => {
-console.log('error', err)
+console.log('ERROR', err)
 })
 ```
 
@@ -150,7 +178,14 @@ Returns an array of all file names present inside the folder
 ``` javascript
 const  options  = {'s3':  s3, 'bucket':  '<Bucket Name>', 'folder': '<Folder Name>'}
 
-const  files  =  await  s3B.getAllFiles(options)
+try {
+  const  files  =  await  s3B.getAllFiles(options)
+  console.log('bucketStructure -->>', bucketStructure)
+}
+catch (e) {
+  console.log('ERROR', e)
+}
+
 console.log('files inside folder -->>', files)
 
 /* As a promise */
@@ -160,8 +195,9 @@ s3B.getAllFiles(options)
 console.log('files inside folder -->>', files)
 })
 .catch((err) => {
-console.log('error', err)
+console.log('ERROR', err)
 })
 ```
-
+### License
+The package is licensed under the terms of [MIT License](https://github.com/jishnu-mohan/s3-dir-utils/blob/master/LICENSE)
 
