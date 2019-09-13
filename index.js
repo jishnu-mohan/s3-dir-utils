@@ -124,11 +124,10 @@ async function fileExists(options, file) {
  * @returns {Promise<Array<string>>} - names of files present inside the bucket
  */
 
-async function getAllFiles(options, file) {
+async function getAllFiles(options) {
   return new Promise((resolve, reject) => {
     if (!options.hasOwnProperty('s3') || options.s3 === null) { throw new Error('Missing required parameter s3') }
     if (!options.hasOwnProperty('bucket') || options.bucket === null) { throw new Error('Missing required parameter bucket') }
-    if (!file || file === null) { throw new Error('Missing required parameter file name') }
     let prefix = (!options.hasOwnProperty('folder') || options.folder === null)? '' : String(options.folder)
     let s3 =  options.s3
     let bucket = options.bucket
