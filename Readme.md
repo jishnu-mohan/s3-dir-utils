@@ -1,4 +1,5 @@
 ﻿# s3 dir utils
+![GitHub](https://img.shields.io/github/license/jishnu-mohan/s3-dir-utils)
 npm module to get AWS s3 bucket details
 
 ## Installation
@@ -7,8 +8,9 @@ npm module to get AWS s3 bucket details
 
 This module features 3 APIs
 1. `getStructure` - returns the file structure of the bucket as a JSON object.
-2. `fileExists` - to check whether a file is present inside the bucket.
-3. `getAllFiles` - returns an array of all files inside the bucket.
+2.  `getAllFiles` - returns an array of all files inside the bucket.
+3. `fileExists` - to check whether a file is present inside the bucket.
+
 
 ## Options
 The module requires an option object 
@@ -200,4 +202,5 @@ console.log('ERROR', err)
 ```
 ### License
 The package is licensed under the terms of [MIT License](https://github.com/jishnu-mohan/s3-dir-utils/blob/master/LICENSE)
+
 
